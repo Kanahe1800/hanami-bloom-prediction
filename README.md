@@ -6,7 +6,7 @@
 ## Motivation  
 Japan attracts an average of 30–40 million tourists each year [1], many drawn by the country’s breathtaking natural scenery and particularly beautiful annual **cherry blossom bloom**.  
 
-Beyond tourism, bloom timing also acts as a **biological sensor** for environmental change. Shifts in the start and duration of blooming can reflect variations in temperature, precipitation, and CO₂ emissions, serving as indicators of climate change.  
+Beyond tourism, bloom timing also acts as a **biological sensor** for environmental change. Shifts in the time of full blooming can reflect variations in temperature, precipitation, and CO₂ emissions, serving as indicators of climate change.  
 
 Our goal is twofold:
 1. Help travelers find the best times to visit Japan for cherry blossoms 
