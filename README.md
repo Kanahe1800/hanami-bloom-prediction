@@ -1,6 +1,9 @@
 # 🌸 Hanami Bloom Prediction  
 **Visualizing Cherry Blossom Bloom Trends Across Japan**
 
+Hackathon Submission Link
+https://www.spaceappschallenge.org/2025/find-a-team/uvic-ai-hanami-division/?tab=project
+
 ---
 
 ## Motivation  
