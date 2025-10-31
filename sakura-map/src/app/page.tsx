@@ -1,3 +1,4 @@
+// npm run dev
 'use client';
 
 import {APIProvider, Map, Marker, useMap} from '@vis.gl/react-google-maps';
@@ -89,7 +90,9 @@ const customMapStyle = [
 function weekToDate(week: number) {
   const year = new Date().getFullYear(); // current year
   const firstJan = new Date(year, 0, 1); // Jan 1st
-  const days = (week - 1) * 7; // convert week to days offset
+  // Clamp week to at least 1
+  const safeWeek = Math.max(1, Math.round(week));
+  const days = (safeWeek - 1) * 7;
   const date = new Date(firstJan);
   date.setDate(firstJan.getDate() + days);
   return date;
@@ -184,8 +187,9 @@ export function UserInputForm() {
       }
 
       const data = await response.json();
-      // console.log("Prediction:", data["prediction"][0]);
-      setPrediction(data["prediction"][0]);
+      console.log("Prediction:", data["prediction"][0]);
+      // setPrediction(data["prediction"][0]);
+      setPrediction(Number(data["prediction"][0]));
 
     } catch (error) {
       console.error("Error fetching prediction:", error);
@@ -252,7 +256,14 @@ export function UserInputForm() {
         Submit
       </button>
 
-      {prediction !== null && (
+      {/* {prediction !== null && (
+      <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '1.2rem', color: '#d72660' }}>
+        Predicted Bloom Week: {prediction.toFixed(2)} <br />
+        Approximate Date: {formatDate(weekToDate(prediction))}
+      </div>
+    )} */}
+
+    {typeof prediction === "number" && !isNaN(prediction) && (
       <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '1.2rem', color: '#d72660' }}>
         Predicted Bloom Week: {prediction.toFixed(2)} <br />
         Approximate Date: {formatDate(weekToDate(prediction))}
@@ -278,10 +289,38 @@ export default function Page() {
         justifyContent: 'center'
       }}
     >
+      {/* Images */}
+       {/* <img 
+          src="/assets/sakura_00.png" 
+          alt="Sakura Blossom" 
+          width={20}
+          height={20}
+          style={{ marginBottom: 16 }} 
+        /> */}
+
+      <div style={{ position: 'relative', width: '100%', minHeight: 100 }}>
+        <img
+          src="/assets/sakura_00.png"
+          alt="Sakura Blossom"
+          width={40}
+          height={40}
+          style={{ position: 'absolute', top: 0, left: 0 }}
+        />
+        <img
+          src="/assets/sakura_00.png"
+          alt="Sakura Blossom"
+          width={40}
+          height={40}
+          style={{ position: 'absolute', top: 0, right: 0 }}
+        />
+      {/* <h1 style={{ textAlign: 'center', color: '#d72660', margin: 0 }}>🌸 Sakura Map 🌸</h1> */}
+      </div>
+  
       <h1 style={{ color: '#d72660', marginBottom: 24 }}>🌸 Sakura Map 🌸</h1>
       <p style={{ color: '#a8325a', marginBottom: 32 }}>
         Welcome! Explore cherry blossom bloom locations across Japan.
       </p>
+      
 
       <div
         style={{
